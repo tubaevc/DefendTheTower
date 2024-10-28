@@ -12,6 +12,8 @@ public class TowerPlacement : MonoBehaviour
         towerManager = FindObjectOfType<TowerManager>();
     }
 
+  
+
     private void OnMouseDown()
     {
         if (towerManager != null && towerManager.HasSelectedTower() && !isOccupied)
@@ -30,5 +32,4 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-  
 }
