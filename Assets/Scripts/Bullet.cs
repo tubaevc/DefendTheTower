@@ -8,7 +8,8 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     public float height = 5f; // parabol
     private float timeAlive; 
-    private Vector2 startPos; 
+    private Vector2 startPos;
+    public int damage = 5;
 
     public void Seek(Transform _target)
     {
@@ -46,5 +47,19 @@ public class Bullet : MonoBehaviour
     void HitTarget()
     {
         Destroy(gameObject); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

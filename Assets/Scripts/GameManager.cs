@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -41,10 +42,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Yetersiz bütçe!");
+            Debug.Log("not enough budget");
             return false;
-        }
+        } 
     }
+    public void AddCoins(int amount)
+    {
+        budget += amount;
+        UpdateBudgetUI();
+        Debug.Log("current $" + budget);
+    }
+
 
     public void UpdateBudgetUI()
     {
