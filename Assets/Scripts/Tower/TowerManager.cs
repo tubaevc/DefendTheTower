@@ -8,6 +8,38 @@ public class TowerManager : MonoBehaviour
     private GameObject selectedTowerPrefab;
     private GameManager gameManager;
 
+    public static void UpgradeTower(Tower tower)
+    {
+        if (!tower.CanUpgrade())
+        {
+            Debug.Log("Tower cannot be upgraded!");
+            return;
+        }
+
+        int upgradePrice = tower.GetUpgradePrice();
+        if (GameManager.Instance.SpendBudget(upgradePrice))
+        {
+            Vector3 position = tower.transform.position;
+            Quaternion rotation = tower.transform.rotation;
+
+            // base tower destroy
+            Destroy(tower.gameObject);
+
+            // upgraded tower build
+            GameObject upgradedTower = Instantiate(tower.towerData.upgradedPrefab, position, rotation);
+            Tower newTowerComponent = upgradedTower.GetComponent<Tower>();
+            if (newTowerComponent != null)
+            {
+                newTowerComponent.isUpgraded = true;
+            }
+
+            Debug.Log("tower upgraded");
+        }
+        else
+        {
+            Debug.Log("not enough budget to upgrade");
+        }
+    }
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -50,4 +82,5 @@ public class TowerManager : MonoBehaviour
             }
         }
     }
+
 }

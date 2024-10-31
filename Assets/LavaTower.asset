@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4298222245087245863, guid: a521abd8843e4c8489f83a161bcb7274, type: 3}
   price: 60
+  upgradePrice: 100
+  upgradedPrefab: {fileID: 8089292758768504883, guid: a7bc5804d11e2724fa66e1bd63472cd0, type: 3}

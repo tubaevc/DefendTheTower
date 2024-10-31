@@ -7,4 +7,8 @@ public class TowerData : ScriptableObject
 {
     public GameObject prefab;
     public int price;
+
+    [Header("Upgrade Settings")]
+    public int upgradePrice;
+    public GameObject upgradedPrefab; 
 }

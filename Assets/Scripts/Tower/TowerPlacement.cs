@@ -5,22 +5,22 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     private TowerManager towerManager;
-    private bool isOccupied = false; // tower placed check
-
+    public bool isOccupied = false; // tower placed check
+    public Tower currentTower;
+    private Tower placedTower;
     private void Start()
     {
         towerManager = FindObjectOfType<TowerManager>();
     }
 
-  
 
     private void OnMouseDown()
     {
         if (towerManager != null && towerManager.HasSelectedTower() && !isOccupied)
         {
             towerManager.PlaceTower(transform.position);
-            isOccupied = true; 
-            Debug.Log("tower placed");
+            isOccupied = true;
+            Debug.Log("Tower placed");
         }
         else if (isOccupied)
         {
@@ -28,8 +28,8 @@ public class TowerPlacement : MonoBehaviour
         }
         else
         {
-            Debug.Log("select a tower");
+            Debug.Log("Select a tower");
         }
     }
-
+ 
 }

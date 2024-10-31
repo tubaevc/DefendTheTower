@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; 
     public int budget = 300; 
-    public TMP_Text budgetText; 
+    public TMP_Text budgetText;
+    private int currentBudget;
 
+    public int CurrentBudget => currentBudget;
     private void Awake()
     {
         if (Instance == null)
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateBudgetUI()
+    public void UpdateBudgetUI()
     {
         budgetText.text = budget.ToString();
     }
