@@ -26,6 +26,11 @@ public class AgentMovement : MonoBehaviour
 
     private void Start()
     {
+        if (targetPoint == null)
+        {
+            targetPoint = GameObject.FindGameObjectWithTag("Tower").transform;
+        }
+
         if (targetPoint != null)
         {
             SetDestination(targetPoint.position);
