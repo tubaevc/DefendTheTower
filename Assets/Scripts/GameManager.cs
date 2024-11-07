@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; 
-    public int budget = 300; 
+    public static GameManager Instance;
+    public int budget = 300;
     public TMP_Text budgetText;
     private int currentBudget;
 
     public int CurrentBudget => currentBudget;
+
+
+    [SerializeField] private int maxHealth = 20;
+    private int currentHealth;
+    [SerializeField] private TMP_Text healthText;
     private void Awake()
     {
         if (Instance == null)
@@ -27,10 +32,22 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateBudgetUI();
+        currentHealth = maxHealth;
+        UpdateHealthText();
         Debug.Log("Start budget: $" + budget);
 
     }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth < 0) currentHealth = 0;
+        UpdateHealthText();
 
+        if (currentHealth <= 0)
+        {
+            GameOver();
+        }
+    }
     public bool SpendBudget(int amount)
     {
         if (budget >= amount)
@@ -44,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("not enough budget");
             return false;
-        } 
+        }
     }
     public void AddCoins(int amount)
     {
@@ -57,5 +74,14 @@ public class GameManager : MonoBehaviour
     public void UpdateBudgetUI()
     {
         budgetText.text = budget.ToString();
+    }
+    private void UpdateHealthText()
+    {
+        healthText.text = "HP: " + currentHealth.ToString();
+
+    }
+    private void GameOver()
+    {
+        Debug.Log("Oyun Bitti!");
     }
 }

@@ -48,12 +48,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("Tower"))
         {
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageToPlayer);
-            }
-            Destroy(gameObject); 
+            Debug.Log("collision with Tower ");
+
+          gameManager.TakeDamage(1);
+            Destroy(gameObject);
+            Debug.Log("enemy destroyed");
         }
     }
+
 }

@@ -173,8 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be28ef227e564c4439b6cf149690efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   animator: {fileID: 4827869672783047487}
+  damageToPlayer: 1
+  coinValue: 10
 --- !u!95 &4827869672783047487
 Animator:
   serializedVersion: 5
