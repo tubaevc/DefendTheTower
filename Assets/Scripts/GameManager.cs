@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateHealthText()
     {
-        healthText.text = "HP: " + currentHealth.ToString();
+        healthText.text = currentHealth.ToString();
 
     }
     private void GameOver()

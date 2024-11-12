@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.22, y: 6.09, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   height: 5
+  damage: 5
+  animator: {fileID: 0}
 --- !u!50 &7386708329263338860
 Rigidbody2D:
   serializedVersion: 4
@@ -160,6 +162,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000059604645, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.7865745

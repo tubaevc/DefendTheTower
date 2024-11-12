@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private int health = 15;
+    [SerializeField]private int health = 15;
     [SerializeField]private Animator animator;
     [SerializeField] private int damageToPlayer = 1;
     [SerializeField] private int coinValue = 10;
@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Debug.Log("collision with Tower ");
 
-          gameManager.TakeDamage(1);
+          gameManager.TakeDamage(damageToPlayer);
             Destroy(gameObject);
             Debug.Log("enemy destroyed");
         }

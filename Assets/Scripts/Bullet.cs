@@ -10,7 +10,12 @@ public class Bullet : MonoBehaviour
     private float timeAlive; 
     private Vector2 startPos;
     public int damage = 5;
+    [SerializeField] private Animator animator;
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void Seek(Transform _target)
     {
         target = _target;
@@ -51,15 +56,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
-            if (enemy != null)
+            if (collision.CompareTag("Enemy"))
             {
-                enemy.TakeDamage(damage);
+                EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
-
-            Destroy(gameObject);
-        }
+            Destroy(gameObject, 2f);
     }
-}
+    }
